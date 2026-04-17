@@ -1,0 +1,70 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>488</x><y>144</y><w>240</w><h>168</h></coordinates><panel_attributes>ViewElement
+--
+-id: string
+-div: HtmlDivelement
+-activateCallback: ActivateCallback
+--
++constructor(id: string)
++appendTo(parent: HtmlElement)
++navigate()
++get id(): string
++get div(): HtmlDivElement
++set activateCallback(value: ActivateCallback)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>344</y><w>152</w><h>80</h></coordinates><panel_attributes>Table
+--
+-manager: Manager
+--
+constructor(manager: Manager)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>344</y><w>160</w><h>80</h></coordinates><panel_attributes>Gomb
+--
+-manager: Manager
+--
+constructor(manager: Manager)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>104</x><y>344</y><w>304</w><h>120</h></coordinates><panel_attributes>NavigationBar
+--
+- viewElementList: ViewElement[]
+-buttonbar: HtmlDivElement
+-viewContainer: HtmlDivElement
+--
++ addViewElement(label: string, viewElement: ViewElement): void
++ navigate(id: string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>304</y><w>64</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;60;30;10;30;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>304</y><w>136</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;150;30;150;50</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>304</y><w>296</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>350;10;350;30;10;30;10;50</additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>0</y><w>320</w><h>264</h></coordinates><panel_attributes>A  03-eshez képest annyi a különbség, 
+hogy a gomb eseménykezelőjében meghívjuk
+ a viewElement megörökölt navigate függvényt is
+
+A NavigatationBar navigate-ben a bemeneti id paraméter alapján
+megkeressük a viewElementetListában
+ azt az elemet, ahova navigáltunk,
+ és meghívjuk a navigate metódusát. (a 03-as logika itt is marad)
+
+Mivel az activateCallback-ben meghívjuk a táblázatnál a
+manager getAllElementjét, ezért mindig a legfrissebb 
+listát fogja megjeleníteni.
+
+A ViewElementben a navigate-nél fontos, hogy ellenőrízzük
+van-e értéke az activateCallback-nek
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>904</x><y>176</y><w>136</w><h>48</h></coordinates><panel_attributes>ActivateCallback
+--
+(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>200</y><w>200</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+a navigate hivja
+ha implementalva van</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>448</x><y>640</y><w>192</w><h>136</h></coordinates><panel_attributes>Manager
+--
+-list: Color[]
+-renderCallback: RenderCallback
+--
+constructor(data: Color[])
++getAllElement(): void
++addElement(elem: Color)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>632</x><y>472</y><w>120</w><h>48</h></coordinates><panel_attributes>RenderCallback
+--
+(colorList: Color[]):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>424</y><w>216</w><h>64</h></coordinates><panel_attributes>lt=&lt;.
+implementálja</panel_attributes><additional_attributes>250;60;250;50;10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>608</y><w>80</w><h>64</h></coordinates><panel_attributes>Color
+--
+szin: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>640</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>10;10;40;10;40;30;110;30</additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>512</y><w>184</w><h>208</h></coordinates><panel_attributes>lt=&lt;-
+a getAllElement hívja</panel_attributes><additional_attributes>90;10;90;240;10;240</additional_attributes></element><element><id>UMLNote</id><coordinates><x>896</x><y>328</y><w>312</w><h>136</h></coordinates><panel_attributes>A  Gomb osztályban lévő 
+gombra klikkelve meghívjuk az addElementet, 
+egy konkrét objektummal
+pl.{szin: "okker"}
+a manager az objektumot hozzáfűzi a list tulajdonságához
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>904</x><y>496</y><w>312</w><h>136</h></coordinates><panel_attributes>A Table activateCallbackje meghívja
+a Manager getAllElement függvényét
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>231</y><w>272</w><h>128</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>320;10;260;10;260;80;10;80;10;140</additional_attributes></element></diagram>

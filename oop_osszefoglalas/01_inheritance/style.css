@@ -1,0 +1,14 @@
+.card{
+    background-color: aqua;
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 4px;
+}
+
+.head{
+    width: 100%;
+    background-color: blueviolet;
+    border-bottom: 2px white solid;
+}

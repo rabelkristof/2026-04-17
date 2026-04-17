@@ -1,0 +1,40 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>671</x><y>253</y><w>231</w><h>176</h></coordinates><panel_attributes>ViewElement
+--
+-id: string
+-div: HtmlDivelement
+--
++constructor(id: string)
++appendTo(parent: HtmlElement)
++get id(): string
++get div(): HtmlDivElement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>605</x><y>473</y><w>187</w><h>110</h></coordinates><panel_attributes>ClassA
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>825</x><y>473</y><w>187</w><h>110</h></coordinates><panel_attributes>ClassB
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>143</x><y>473</y><w>418</w><h>165</h></coordinates><panel_attributes>NavigationBar
+--
+- viewElementList: ViewElement[]
+-buttonbar: HtmlDivElement
+-viewContainer: HtmlDivElement
+--
++ addViewElement(label: string, viewElement: ViewElement): void
++ navigate(id: string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>715</x><y>418</y><w>88</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;60;30;10;30;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>418</y><w>187</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;150;30;150;50</additional_attributes></element><element><id>Relation</id><coordinates><x>396</x><y>418</y><w>407</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>350;10;350;30;10;30;10;50</additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>0</y><w>440</w><h>363</h></coordinates><panel_attributes>AddViewElement létrehoz egy gombot, az id-ja "button_" majd a hozzáadandó viewElement azonosítója, és az 
+eseménykezelőben hozzáfűzzük a viewElement paramétert a
+viewContainerhez, miután annak a tartalmát töröltük
+Emelett a gomb eseménykezelőjében hozzáfűzzük a 
+kattintott gombhoz az active classt, és töröljük a többiről
+  
+Alapértelmezetten egyik gomb sem aktív.
+
+Az index.js-ben nem fűzzük hozzá a ClassA-t és ClassB-t
+a bodyhoz. csaka  beregisztrált új gomb eseménykezelőjében.
+
+A navigate függvény a navigationben a bemeneti 
+id paraméter segítségével és
+ "button_" prefixel lekéri a gombot, majd
+ meghívja a gomb click metódusát.
+
+A navigationbar példány navigate függvényét 
+a példányosított 
+classA vagy classB id-jával meg tudjuk hívni.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>318</x><y>308</y><w>374</w><h>187</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>320;10;240;10;240;70;10;70;10;150</additional_attributes></element></diagram>

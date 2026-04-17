@@ -1,0 +1,34 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>504</x><y>24</y><w>232</w><h>112</h></coordinates><panel_attributes>ViewElement
+--
+-div: HtmlDivElement
+-manager: Manager
+--
++ constructor(manager: Manager)
++ appendTo(parentElement: HtmlElement): void
++ get manager(): Manager
++ get div(): HtmlDivElement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>168</y><w>176</w><h>112</h></coordinates><panel_attributes>ButtonElement
+--
+-button: HtmlButtonElement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>168</y><w>176</w><h>112</h></coordinates><panel_attributes>EmptyButtonElement
+--
+-button: HtmlButtonElement</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>168</y><w>176</w><h>112</h></coordinates><panel_attributes>TableElement
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>512</x><y>440</y><w>192</w><h>136</h></coordinates><panel_attributes>Manager
+--
+-list: Color[]
+-renderCallback: RenderCallback
+--
+constructor(data: Color[])
++getEmptyList(): void
++getAllElement
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>416</x><y>128</y><w>216</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>250;10;250;30;10;30;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>608</x><y>128</y><w>72</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;70;30;70;50</additional_attributes></element><element><id>Relation</id><coordinates><x>608</x><y>128</y><w>232</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;270;30;270;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>616</x><y>320</y><w>120</w><h>48</h></coordinates><panel_attributes>RenderCallback
+--
+(colorList: Color[]):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>664</x><y>360</y><w>344</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+hívja a getAllElement a list tulajdonság értékével
+és a getEmptyList egy üres tömb értékkel</panel_attributes><additional_attributes>10;10;10;50;140;50;140;180;50;180</additional_attributes></element><element><id>Relation</id><coordinates><x>464</x><y>272</y><w>216</w><h>64</h></coordinates><panel_attributes>lt=&lt;.
+implementálja</panel_attributes><additional_attributes>250;60;250;50;10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>408</y><w>80</w><h>64</h></coordinates><panel_attributes>Color
+--
+szin: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>424</x><y>440</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>10;10;40;10;40;30;110;30</additional_attributes></element><element><id>UMLNote</id><coordinates><x>797</x><y>56</y><w>264</w><h>72</h></coordinates><panel_attributes>A buttonElement a gomb eseménykezelőjében
+ a getAllElementet hívja
+az EmptyButtonElement a getEmptyListet
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>

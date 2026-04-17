@@ -1,0 +1,117 @@
+<diagram program="umletino" version="15.1"><zoom_level>12</zoom_level><help_text>
+</help_text><element><id>UMLClass</id><coordinates><x>672</x><y>264</y><w>360</w><h>192</h></coordinates><panel_attributes>ViewElement
+--
+-id: string
+-div: HtmlDivElement
+-activateCallback
+--
++constructor(id: string)
++ appendTo(parent: HtmlElement)
++ activate(value: string, param: ParamType): void
++ get id(): string
++ get div(): HtmlDivElement
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>552</y><w>384</w><h>132</h></coordinates><panel_attributes>Table
+--
+-manager: Manager
+--
+constructor(id: string, manager: Manager,
+navigationBar: NavigationBar)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>972</x><y>552</y><w>552</w><h>144</h></coordinates><panel_attributes>Form
+--
+-manager: Manager
+-formInputList: FormInput[]
+-szinparam?: EditColorType
+--
++ constructor(id: string, formFieldList: FormFieldType[], manager: Manager)
+-createElement(): ColorType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>768</y><w>228</w><h>252</h></coordinates><panel_attributes>FormInput
+--
+-inputElement: HtmlInput
+-errordiv: HtlmDivElement
+- name: string
+--
++constructor(id: string, label: string, 
+name: string, 
+parent: HtmlFormElement)
++validate(): boolean
+get name(): string
+get value(): string
+set value(newValue: string)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1236</x><y>684</y><w>60</w><h>108</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>144</x><y>552</y><w>420</w><h>144</h></coordinates><panel_attributes>NavigationBar
+--
+- viewElementList: ViewElement[]
+--
++ activate(value: string, param: ParamType)
++ addViewElement(label: string, viewElement: ViewElement )
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>444</y><w>516</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>410;10;410;60;10;60;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>444</y><w>156</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;110;60;10;60;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>444</y><w>312</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;240;60;240;90</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>348</y><w>432</w><h>228</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>340;10;10;10;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1332</x><y>324</y><w>216</w><h>60</h></coordinates><panel_attributes>ActivateCallback
+--
+(param?: ParamType):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>336</y><w>336</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
+navigate hívja, ha implementálva van</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>552</x><y>1020</y><w>372</w><h>240</h></coordinates><panel_attributes>Manager
+--
+- list: Color[]
+- renderCallback: RenderCallback
+--
++ constructor(data: ColorType)
++ getAllElement(): void
++ addElement(elem: ColorType): void
++ getElementById(id: number): ColorType
++ updateElement(id: number, elem: ColorType): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>192</x><y>1044</y><w>168</w><h>168</h></coordinates><panel_attributes>Color
+--
+-id: number
+- color: string
+--
+get id(): number
+set id(value: number)
+get color(): string
+set color(value: string)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>348</x><y>1056</y><w>228</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*
+</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>948</x><y>840</y><w>120</w><h>108</h></coordinates><panel_attributes>ColorType
+--
+szin: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>984</x><y>684</y><w>132</w><h>180</h></coordinates><panel_attributes>lt=&lt;.
+előállítja</panel_attributes><additional_attributes>20;130;20;40;90;40;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>912</x><y>936</y><w>276</w><h>252</h></coordinates><panel_attributes>lt=&lt;.
+Átalakítja Color osztállyá</panel_attributes><additional_attributes>70;10;70;190;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>624</x><y>780</y><w>204</w><h>60</h></coordinates><panel_attributes>RenderCallback
+--
+(Color[]) :void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>672</y><w>132</w><h>132</h></coordinates><panel_attributes>lt=&lt;.
+Implementálja</panel_attributes><additional_attributes>70;90;70;60;50;60;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>828</y><w>204</w><h>216</h></coordinates><panel_attributes>lt=&lt;-
+meghívja a getAllElement</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1728</x><y>936</y><w>540</w><h>312</h></coordinates><panel_attributes>A Form kap egy új tulajdonságot, amelynek nem mindig van értéke
+
+A Table activateCallback implementációján a korábbiakhoz képest
+nem kell változtatni
+
+A Form activateCallbackjét definiáljuk úgy, hogy megnézzük kapott-e paramétert, 
+ha kapott, akkor lekérjük kapott paraméter id tulajdonságának
+segítségével az elemet, és mind az id-t mind a kapott color-t beállítjuk a szinparamba.
+mivel a ColorType key-ei
+megegyeznek a FormInput name tulajdonságainak értékeivel
+Ezért be tudjuk állítani a form inputjainak értékét, ha definiálunk
+egy settert a FormInputba a value-nak, ami az input value-ját állítja
+
+A form eseménykezelőben vizsgáljuk, hogy a szinparamnak van-e értéke, 
+ugyanis amennyiben van, biztosan elemet szerkesztünk, ha pedig nincs,
+akkor új elemet fűzünk hozzá a listához.
+
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1452</x><y>408</y><w>228</w><h>96</h></coordinates><panel_attributes>FormFieldType
+--
+id: string
+label: string
+name: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1368</x><y>492</y><w>204</w><h>84</h></coordinates><panel_attributes>lt=&lt;.
+FormInputot állít elő belőle</panel_attributes><additional_attributes>140;10;140;30;20;30;20;50</additional_attributes></element><element><id>Relation</id><coordinates><x>924</x><y>684</y><w>600</w><h>552</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;440;480;440;480;10</additional_attributes></element><element><id>Relation</id><coordinates><x>492</x><y>672</y><w>204</w><h>372</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>150;290;150;170;10;170;10;70;150;70;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1596</x><y>564</y><w>168</w><h>132</h></coordinates><panel_attributes>EditColorType
+--
+id: number
+szin: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1512</x><y>624</y><w>108</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>0</y><w>120</w><h>108</h></coordinates><panel_attributes>ParamType
+--
+id?: number</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>12</y><w>864</w><h>576</h></coordinates><panel_attributes>lt=&lt;.
+Ennek a segítségével fogja meghívni a viewElementek navigate-jét</panel_attributes><additional_attributes>120;460;120;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>888</x><y>96</y><w>216</w><h>192</h></coordinates><panel_attributes>lt=&lt;.
+az ActivateCallback-et hívja</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>36</x><y>24</y><w>828</w><h>864</h></coordinates><panel_attributes>lt=&lt;.
+A Szer-
+kesztésre
+ kattintva 
+előállítja</panel_attributes><additional_attributes>450;540;450;590;320;590;320;700;10;700;10;10;670;10</additional_attributes></element><element><id>Relation</id><coordinates><x>948</x><y>12</y><w>1452</w><h>600</h></coordinates><panel_attributes>lt=&lt;.
+Az activateCallbackben vizsgáljuk, hogy paraméterrel activáltuk-e az oldalt</panel_attributes><additional_attributes>480;480;520;480;520;440;660;440;660;370;770;370;770;10;10;20</additional_attributes></element></diagram>

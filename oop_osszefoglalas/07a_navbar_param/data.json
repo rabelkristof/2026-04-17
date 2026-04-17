@@ -1,0 +1,15 @@
+{
+    "formFieldList": [{
+        "id": "szin",
+        "label": "Szín",
+        "name": "szin"
+    }],
+    "arr": [
+        {"szin": "kék"},
+        {"szin": "zöld"},
+        {"szin": "piros"},
+        {"szin": "lila"},
+        {"szin": "sárga"},
+        {"szin": "barna"}
+    ]
+}

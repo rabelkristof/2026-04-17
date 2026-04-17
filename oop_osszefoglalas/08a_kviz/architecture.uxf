@@ -1,0 +1,333 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>513</x><y>18</y><w>261</w><h>144</h></coordinates><panel_attributes>ViewElement
+--
+- div : HtmlDivElement
+- id: string
+- activateCallback: ActivateCallback
+--
++ appendTo(value: HtmlElement): void
++ set activateCallback(value: ActivateCallback)
++ get div(): HTMLDivElement
++ activate(id: string) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>189</x><y>225</y><w>333</w><h>108</h></coordinates><panel_attributes>NavigationBar
+--
+- viewElementList: ViewElement[]
+--
++ activate(value: string)
++ addViewElement(label: string, viewElement: ViewElement )
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>558</x><y>225</y><w>225</w><h>81</h></coordinates><panel_attributes>TableView
+--
+- manager: QuestionManager
+- tbody: HtmlTableSectionElement
+--
++ constructor()
+- tableCallback(): RenderListCallback</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>801</x><y>225</y><w>315</w><h>108</h></coordinates><panel_attributes>TableForm
+--
+- tbody: HtmlTableSectionElement
+- manager: QuestionManager
+--
++constructor(id: string, fieldList: FormFieldType
+manager: AuthorManager)
+- createElement(): AuthorType
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1134</x><y>225</y><w>288</w><h>108</h></coordinates><panel_attributes>Import/Export
+--
+- result: HtmlDivElement
+- manager: QuestionManager
+--
++constructor(id: string, manager: QuestionManager)
+- createImport():void
+- createExport(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>558</x><y>864</y><w>387</w><h>225</h></coordinates><panel_attributes>QuestionManager
+--
+- author: Question[]
+- renderListCallback: RenderListCallback
+- addElementResultCallback: AddElementResultCallback
+- importResultCallback: ImportResultCallback
+--
++ addElement(element: QuestionType)
++ getAllElement()
++ addElementList(elementList: QuestionType[])
++ getExportContent(): string
++ set renderListCallback( value: RenderListCallback): void
++ set addElementResultCallback( value: AddElementResultCallback): void
++ set importResultCallback(value: ImportResultCallback):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>189</x><y>846</y><w>162</w><h>207</h></coordinates><panel_attributes>Question
+--
+- question: string
+- answers: string[]
+- rightAnswer: string
+--
+get id(): string
+get question(): string
+get answers(): string[]
+get rightAnswer(): string
+set id(value: string) :void
+set question(value: string) :void
+set answers(value: string[]) :void
+set rightAnswer(value: string) :void
+valid(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>675</y><w>234</w><h>45</h></coordinates><panel_attributes>RenderListCallback
+--
+(authorList: Question[])</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>153</y><w>198</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;200;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>153</y><w>135</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;130;50;130;80</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>153</y><w>603</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;650;50;650;80</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>153</y><w>324</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;340;50;340;80</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>99</y><w>216</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>220;10;10;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1053</x><y>72</y><w>162</w><h>45</h></coordinates><panel_attributes>ActivateCallback
+--
+():void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>765</x><y>72</y><w>306</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+activate hívja, ha implementálva van</panel_attributes><additional_attributes>320;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1089</x><y>657</y><w>171</w><h>90</h></coordinates><panel_attributes>QuestionType
+--
++ question: string
++ answers: string[]
++ rightAnswer: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>729</x><y>297</y><w>36</w><h>585</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;630</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1287</x><y>639</y><w>234</w><h>45</h></coordinates><panel_attributes>ImportResultCallback
+--
+(message: string)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1089</x><y>324</y><w>63</w><h>351</h></coordinates><panel_attributes>lt=&lt;.
+Előállít </panel_attributes><additional_attributes>10;370;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>846</x><y>324</y><w>117</w><h>396</h></coordinates><panel_attributes>lt=&lt;.
+
+
+
+
+
+
+
+
+
+
+
+Implementálja 
+a managerből jövő
+üzenet
+megjelenítésére</panel_attributes><additional_attributes>10;420;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>675</y><w>531</w><h>324</h></coordinates><panel_attributes>lt=&lt;-
+meghívja az importban</panel_attributes><additional_attributes>570;10;570;340;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>324</y><w>261</w><h>333</h></coordinates><panel_attributes>lt=&lt;.
+Implementálja a managerből jövő 
+üzenet megjelenítésére</panel_attributes><additional_attributes>80;350;80;60;10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>324</y><w>36</w><h>558</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;600</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>711</y><w>117</w><h>171</h></coordinates><panel_attributes>lt=&lt;-
+meghívja a 
+getAllElementben</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>639</x><y>297</y><w>99</w><h>396</h></coordinates><panel_attributes>lt=&lt;.
+implementálja
+</panel_attributes><additional_attributes>10;420;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>306</y><w>621</w><h>747</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=1</panel_attributes><additional_attributes>540;10;670;10;670;800;10;800</additional_attributes></element><element><id>Relation</id><coordinates><x>1143</x><y>324</y><w>99</w><h>351</h></coordinates><panel_attributes>lt=&lt;.
+Előállít</panel_attributes><additional_attributes>50;370;50;100;10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>738</y><w>144</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+hívja az addElementnél</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>738</y><w>297</w><h>207</h></coordinates><panel_attributes>lt=.&gt;
+Átalakít Author osztállyá</panel_attributes><additional_attributes>10;210;290;210;290;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>396</y><w>171</w><h>153</h></coordinates><panel_attributes>FormField
+--
+-inputElement: HtmlInput
+-errordiv: HtlmDivElement
+- name: string
+--
++constructor(id: string, label: string, 
+name: string, 
+parent: HtmlFormElement)
++validate(): boolean
+get name(): string
+get value(): string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>342</x><y>918</y><w>234</w><h>36</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=0..*</panel_attributes><additional_attributes>240;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>954</x><y>324</y><w>45</w><h>90</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>837</x><y>702</y><w>234</w><h>45</h></coordinates><panel_attributes>FormCallback
+--
+(message: string)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>531</x><y>1449</y><w>270</w><h>144</h></coordinates><panel_attributes>ViewElement
+--
+-id: string
+-div: HtmlDivElement
+-activateCallback
+--
++constructor(id: string)
++ appendTo(parent: HtmlElement)
++ activate(value: string, param: ParamType): void
++ get id(): string
++ get div(): HtmlDivElement
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>1665</y><w>288</w><h>99</h></coordinates><panel_attributes>Table
+--
+-manager: Manager
+--
+constructor(id: string, manager: Manager,
+navigationBar: NavigationBar)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>1827</y><w>171</w><h>189</h></coordinates><panel_attributes>FormInput
+--
+-inputElement: HtmlInput
+-errordiv: HtlmDivElement
+- name: string
+--
++constructor(id: string, label: string, 
+name: string, 
+parent: HtmlFormElement)
++validate(): boolean
+get name(): string
+get value(): string
+set value(newValue: string)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>954</x><y>1764</y><w>45</w><h>81</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>135</x><y>1665</y><w>279</w><h>108</h></coordinates><panel_attributes>NavigationBar
+--
+- viewElementList: ViewElement[]
+--
++ activate(value: string, param: ParamType)
++ addViewElement(label: string, vievElement: ViewElement )
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1584</y><w>387</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>410;10;410;60;10;60;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>567</x><y>1584</y><w>117</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;110;60;10;60;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>657</x><y>1584</y><w>234</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;240;60;240;90</additional_attributes></element><element><id>Relation</id><coordinates><x>225</x><y>1512</y><w>324</w><h>171</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>340;10;10;10;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1026</x><y>1494</y><w>162</w><h>45</h></coordinates><panel_attributes>ActivateCallback
+--
+(param?: ParamType):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>1503</y><w>252</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+navigate hívja, ha implementálva van</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>153</x><y>2106</y><w>198</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*
+</panel_attributes><additional_attributes>10;20;200;20</additional_attributes></element><element><id>Relation</id><coordinates><x>765</x><y>1764</y><w>99</w><h>135</h></coordinates><panel_attributes>lt=&lt;.
+előállítja</panel_attributes><additional_attributes>20;130;20;40;90;40;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>711</x><y>1953</y><w>207</w><h>189</h></coordinates><panel_attributes>lt=&lt;.
+Átalakítja Color osztállyá</panel_attributes><additional_attributes>70;10;70;190;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1116</x><y>1557</y><w>171</w><h>72</h></coordinates><panel_attributes>FormFieldType
+--
+id: string
+label: string
+name: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1053</x><y>1620</y><w>153</w><h>63</h></coordinates><panel_attributes>lt=&lt;.
+FormInputot állít elő belőle</panel_attributes><additional_attributes>140;10;140;30;20;30;20;50</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>1764</y><w>450</w><h>414</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;440;480;440;480;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1224</x><y>1674</y><w>126</w><h>126</h></coordinates><panel_attributes>EditQuestionType
+--
+id: number
+answer1: string
+answer2: string
+answer3: string
+answer4: string
+question: string
+rightanswer: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1161</x><y>1719</y><w>81</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>657</x><y>1251</y><w>90</w><h>81</h></coordinates><panel_attributes>ParamType
+--
+id?: number</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>27</x><y>1260</y><w>648</w><h>432</h></coordinates><panel_attributes>lt=&lt;.
+Ennek a segítségével fogja meghívni a viewElementek navigate-jét</panel_attributes><additional_attributes>120;460;120;20;700;20</additional_attributes></element><element><id>Relation</id><coordinates><x>693</x><y>1323</y><w>162</w><h>144</h></coordinates><panel_attributes>lt=&lt;.
+az ActivateCallback-et hívja</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>54</x><y>1269</y><w>621</w><h>648</h></coordinates><panel_attributes>lt=&lt;.
+A Szer-
+kesztésre
+ kattintva 
+előállítja</panel_attributes><additional_attributes>450;540;450;590;320;590;320;700;10;700;10;10;670;10</additional_attributes></element><element><id>Relation</id><coordinates><x>738</x><y>1260</y><w>1089</w><h>450</h></coordinates><panel_attributes>lt=&lt;.
+Az activateCallbackben vizsgáljuk, hogy paraméterrel activáltuk-e az oldalt</panel_attributes><additional_attributes>480;480;520;480;520;440;660;440;660;370;770;370;770;10;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>1665</y><w>414</w><h>108</h></coordinates><panel_attributes>Form
+--
+-manager: Manager
+-formInputList: FormInput[]
+-szinparam?: EditQuestionType
+--
++ constructor(id: string, formFieldList: FormFieldType[], manager: Manager)
+-createElement(): QuestionType</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>2034</y><w>387</w><h>225</h></coordinates><panel_attributes>QuestionManager
+--
+- author: Question[]
+- renderListCallback: RenderListCallback
+- addElementResultCallback: AddElementResultCallback
+- importResultCallback: ImportResultCallback
+--
++ addElement(element: QuestionType)
++ getAllElement()
++ addElementList(elementList: QuestionType[])
++ getExportContent(): string
++ getElementById(id: number): QuestionType
++ updateElement(id: number, elem: QuestionType): void
++ set renderListCallback( value: RenderListCallback): void
++ set addElementResultCallback( value: AddElementResultCallback): void
++ set importResultCallback(value: ImportResultCallback):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>2043</y><w>162</w><h>207</h></coordinates><panel_attributes>Question
+--
+- question: string
+- answers: string[]
+- rightAnswer: string
+--
+get id(): string
+get question(): string
+get answers(): string[]
+get rightAnswer(): string
+set id(value: string) :void
+set question(value: string) :void
+set answers(value: string[]) :void
+set rightAnswer(value: string) :void
+valid(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>1881</y><w>171</w><h>90</h></coordinates><panel_attributes>QuestionType
+--
++ question: string
++ answers: string[]
++ rightAnswer: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>324</x><y>3249</y><w>387</w><h>225</h></coordinates><panel_attributes>QuestionManager
+--
+- author: Question[]
+- renderListCallback: RenderListCallback
+- addElementResultCallback: AddElementResultCallback
+- importResultCallback: ImportResultCallback
+--
++ addElement(element: QuestionType)
++ getAllElement()
++ addElementList(elementList: QuestionType[])
++ getExportContent(): string
++ getElementById(id: number): QuestionType
++ updateElement(id: number, elem: QuestionType): void
++ getRandomQuestions(): QuestionType[]
++ set renderListCallback( value: RenderListCallback): void
++ set addElementResultCallback( value: AddElementResultCallback): void
++ set importResultCallback(value: ImportResultCallback):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>801</x><y>3267</y><w>315</w><h>180</h></coordinates><panel_attributes>QuizManager
+--
+- currentQuestionNumber: number
+- questions: Question[]
+- questionAnswers: string[]
+- nextQuestionCallback: NextQuestionCallback
+- finishResultCallback: FinishResultCallback
+- manager: QuestionManager
+--
++ constructor(manager: QuestionManager)
++ startQuiz() : void
++ nextQuestion(answer: string): void
++ set nextQuestionCallback(value: NextQuestionCallback)
++ set finishResultCallback(value: FinishResultCallback)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>702</x><y>3321</y><w>117</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>675</x><y>3519</y><w>162</w><h>207</h></coordinates><panel_attributes>Question
+--
+- question: string
+- answers: string[]
+- rightAnswer: string
+--
+get id(): string
+get question(): string
+get answers(): string[]
+get rightAnswer(): string
+set id(value: string) :void
+set question(value: string) :void
+set answers(value: string[]) :void
+set rightAnswer(value: string) :void
+valid(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>585</x><y>3465</y><w>108</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>100;130;10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>828</x><y>3447</y><w>81</w><h>162</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>10;150;70;150;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>2457</y><w>261</w><h>144</h></coordinates><panel_attributes>ViewElement
+--
+- div : HtmlDivElement
+- id: string
+- activateCallback: ActivateCallback
+--
++ appendTo(value: HtmlElement): void
++ set activateCallback(value: ActivateCallback)
++ get div(): HTMLDivElement
++ activate(id: string) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>855</x><y>2655</y><w>207</w><h>117</h></coordinates><panel_attributes>QuizView
+--
+-manager: QuizManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>2592</y><w>207</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;210;40;210;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1071</x><y>3006</y><w>162</w><h>63</h></coordinates><panel_attributes>FinishResultCallback
+--
+(result: string):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>954</x><y>2763</y><w>135</w><h>261</h></coordinates><panel_attributes>lt=&lt;.
+Implementálja, hogy 
+hogyan jelenjen meg
+a következő kérdés</panel_attributes><additional_attributes>10;270;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>3186</y><w>108</w><h>63</h></coordinates><panel_attributes>QuestionViewType
+--
++ question: string
++ answers: string[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>837</x><y>3033</y><w>36</w><h>171</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>20;10;10;10;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>855</x><y>3006</y><w>189</w><h>63</h></coordinates><panel_attributes>NextQuestionCallback
+--
+(question: QuestionViewType):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>855</x><y>2538</y><w>567</w><h>774</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>290;840;610;840;610;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>3069</y><w>153</w><h>216</h></coordinates><panel_attributes>lt=&lt;-
+Meghívja a stratQuiz,
+hogy megjelenjen 
+az első kérdés
+Meghívja a 
+nextQuestion függvény, 
+ha van még kérdés</panel_attributes><additional_attributes>10;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1062</x><y>3060</y><w>153</w><h>225</h></coordinates><panel_attributes>lt=&lt;-
+Meghívja a nextQuestion,
+ha nincs több kérdés</panel_attributes><additional_attributes>80;10;80;70;10;70;10;230</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1854</x><y>1386</y><w>342</w><h>243</h></coordinates><panel_attributes>Bevezetjük a paraméteres navigációt
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1899</x><y>531</y><w>324</w><h>252</h></coordinates><panel_attributes>Megcsináljuk az import/exportot, elem hozzáadást
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1791</x><y>2583</y><w>495</w><h>243</h></coordinates><panel_attributes>Bevezetünk egy új tabot, a quiznek.
+Létrehozunk egy új szervíz osztályt, ami a játékért felel
+
+Amikor a tab-ra navigálunk, 
+egy play gombot látunk, és ha a felhasználó rákattint kezdődik a kvíz.
+
+A QuestionManager api-ja bővül egy új metódussal, a randomQuestion-el, ami a listából
+ választ ki 10 véletlenszerű kérdést, és visszatér vele.
+figyeljünk arra, hogy az eredeti eltárolt tömb adatainak sorrendjét
+ne módosítsuk, hanem egz új tömböt hozzunk létre a 
+az eltárolt listánk alapján.
+
+A startQuiz ezt a függvényt hívja meg először és felépíti a question-oket a játékhoz.
+
+A QuizManager esetében vagy újra generáljuk a Question példányosítások esetén az id-t,
+vagy egyszerűen kihagyjuk. A valid függvényt sem kötelező meghívni, hiszen 
+elméletileg a QuestionManager csakis helyes Question példányokat tárol.
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>
