@@ -55,6 +55,7 @@ export class NavigationBar extends ViewElement {
     this.#viewContainer.innerHTML = "";
     for (const viewElement of this.#viewElementList) {
       if (viewElement.id == id) {
+        viewElement.navigate();
         this.#viewContainer.appendChild(viewElement.div);
       }
     }

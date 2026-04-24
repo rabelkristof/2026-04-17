@@ -7,7 +7,15 @@ import { Question } from "./question.js";
  */
 
 /**
- * @typedef {{question: string, answer1: string, answer2: string, answer3: string, answer4: string, rightAnswer: string}} QuestionType
+ * @callback AddStatusCallback
+ * @param {string} message
+ * @returns {void}
+ */
+
+/**
+ * @callback ImportResultCallback
+ * @param {string} message
+ * @returns {void}
  */
 
 export class QuestionManager {
@@ -22,7 +30,17 @@ export class QuestionManager {
   #renderCallback;
 
   /**
-   * @param {QuestionType[]} questions
+   * @type {AddStatusCallback}
+   */
+  #addStatusCallback;
+
+  /**
+   * @type {ImportResultCallback}
+   */
+  #importResultCallback;
+
+  /**
+   * @param {import("./gomszab.js").QuestionType[]} questions
    */
   constructor(questions = undefined) {
     this.#questionList = [];
@@ -45,7 +63,7 @@ export class QuestionManager {
   }
 
   /**
-   * @param {QuestionType} question
+   * @param {import("./gomszab.js").QuestionType} question
    * @returns {Question}
    */
   #createQuestion(question) {
@@ -61,5 +79,83 @@ export class QuestionManager {
     questionClass.rightAnswer = question.rightAnswer;
 
     return questionClass;
+  }
+
+  /**
+   * @param {import("./gomszab.js").QuestionType} question
+   * @returns {void}
+   */
+  addElement(question) {
+    const newQuestion = this.#createQuestion(question);
+    if (
+      newQuestion.question &&
+      newQuestion.rightAnswer &&
+      newQuestion.answers.length == 4
+    ) {
+      if (this.#addStatusCallback) this.#addStatusCallback("Sikeres hozzáadás");
+      this.#questionList.push(newQuestion);
+    } else {
+      if (this.#addStatusCallback)
+        this.#addStatusCallback("Sikertelen hozzáadás");
+    }
+    this.getAllElement();
+  }
+
+  /**
+   * @param {import("./gomszab.js").QuestionType[]} questions
+   * @returns {void}
+   */
+  addElementList(questions) {
+    this.#questionList = [];
+
+    let valid = true;
+    for (let i = 0; i < questions.length; i++) {
+      const newQuestion = this.#createQuestion(questions[i]);
+
+      if (
+        newQuestion.question &&
+        newQuestion.rightAnswer &&
+        newQuestion.answers.length == 4
+      ) {
+        this.#questionList.push(newQuestion);
+      } else {
+        if (this.#importResultCallback) {
+          this.#importResultCallback(`Sikertelen hozzáadás a ${i + 1}. sorban`);
+        }
+        return;
+      }
+    }
+
+    this.getAllElement();
+    if (this.#importResultCallback)
+      this.#importResultCallback("Sikeres hozzáadás");
+  }
+
+  /**
+   * @returns {string}
+   */
+  getExportContent() {
+    const result = [];
+    for (const question of this.#questionList) {
+      result.push(
+        `${question.question};${question.answers.join(";")};${question.rightAnswer}`,
+      );
+    }
+
+    return result.join("\n");
+  }
+
+  /**
+   * @param {AddStatusCallback} value
+   */
+  set addStatusCallback(value) {
+    this.#addStatusCallback = value;
+  }
+
+  /**
+   * @param {ImportResultCallback} value
+   */
+  set importResultCallback(value) {
+    this.#importResultCallback = value;
   }
 }

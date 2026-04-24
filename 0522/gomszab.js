@@ -183,6 +183,14 @@ const createForm = (createCallback, eventlistener) => {
   // 5. hozzácsatolja a gombot a formhoz
   // 6. beállítja a form submit eseménykezelőjének a függvény második paraméterét
   // 7. Visszatér egy objektummal aminek a form tulajdonsága a létrehozott formot, a button tulajdonsága a létrehozott gombot tartalmazza
+  const form = document.createElement("form");
+  createCallback(form);
+  const button = document.createElement("button");
+  button.innerText = "Küldés";
+  form.appendChild(button);
+  form.addEventListener("submit", eventlistener);
+
+  return { form, button };
 };
 
 /**
@@ -203,6 +211,21 @@ const createInputField = ({ id, name, labelContent, parent }) => {
   // 10. Beállítja az input name értékének a függvény paraméterének name tulajdonságán található értéket
   // 11. Létrehoz egy errorElementDiv-et a createDiv függvény segítségével, ahol a parent a korábban létrehozott div, a classList pedig egy tömb ami tartalmazza az error string elemet
   // 12. Visszatér egy objektummal, ahol az errorElement tulajdonság a létrehozott errordivet, az input tulajdonság pedig a létrehozott inputot tartalmazza
+  const div = createDiv({ parent });
+  const label = document.createElement("label");
+  label.innerText = labelContent;
+  label.htmlFor = id;
+  div.appendChild(label);
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.id = id;
+  input.name = name;
+  div.appendChild(input);
+
+  const errorElementDiv = createDiv({ parent, classList: ["error"] });
+
+  return { errorElement: errorElementDiv, input };
 };
 
 /**
@@ -215,6 +238,11 @@ const createFileInput = (parent) => {
   // 2. beállítja a file típust
   // 3. Hozzácsatolja a parent paraméterhez
   // 4. visszatér a létrehozott inputtal
+  const input = document.createElement("input");
+  input.type = "file";
+  parent.appendChild(input);
+
+  return input;
 };
 
 /**
@@ -226,6 +254,9 @@ const createSpan = (parent, content) => {
   // 1. Létrehoz egy span elemet
   // 2. Beállítja a második paramétert a span tartalmának
   // 3. Hozzácsatolja az első paraméterhez a létrehozott span elemet
+  const span = document.createElement("span");
+  span.innerText = content;
+  parent.appendChild(span);
 };
 
 /**
