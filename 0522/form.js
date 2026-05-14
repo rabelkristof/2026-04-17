@@ -7,6 +7,10 @@ import {
 import { QuestionManager } from "./manager.js";
 import { ViewElement } from "./viewelement.js";
 
+/**
+ * @typedef {{id: number, question: string, answer1: string, answer2: string, answer3: string, answer4: string, rightAnswer: string}} EditQuestionType
+ */
+
 export class FormController extends ViewElement {
   /**
    * @type {FormInput[]}
@@ -22,6 +26,16 @@ export class FormController extends ViewElement {
    * @type {HTMLFormElement}
    */
   #form;
+
+  /**
+   * @type {HTMLButtonElement}
+   */
+  #submitButton;
+
+  /**
+   * @type {EditQuestionType}
+   */
+  #editQuestion;
 
   /**
    * @param {string} id
@@ -55,6 +69,12 @@ export class FormController extends ViewElement {
         this.#createElement();
       },
     ).form;
+
+    this.activateCallback = (questionId) => {
+      if (!questionId) return;
+
+      const question = this.#manager.getQuestionTypeById(questionId);
+    }
 
     this.div.appendChild(this.#form);
   }
@@ -123,9 +143,17 @@ class FormInput {
   }
 
   /**
+   * @param {string} newVal 
+   */
+  set value(newVal) {
+    this.#input.value;
+  }
+
+  /**
    * @returns {boolean} Valid-e
    */
   validate() {
+    this.#errorDiv.innerText = "";
     if (this.#input.value) {
       return true;
     } else {

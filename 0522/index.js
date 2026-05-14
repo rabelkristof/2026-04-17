@@ -8,7 +8,7 @@ import { ImportExport } from "./importexport.js";
 
 const navbar = new NavigationBar("navbar");
 const manager = new QuestionManager(data.questions);
-const table = new Table("table", manager, data.tableHeader);
+const table = new Table("table", manager, data.tableHeader, navbar);
 const form = new FormController("form", manager, data.formFieldList);
 const importExport = new ImportExport("importexport", manager);
 

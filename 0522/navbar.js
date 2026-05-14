@@ -45,9 +45,10 @@ export class NavigationBar extends ViewElement {
 
   /**
    * @param {string} id
+   * @param {number} [questionId]
    * @returns {void}
    */
-  navigate(id) {
+  navigate(id, questionId) {
     for (const button of this.#buttonBar.querySelectorAll("button")) {
       button.classList.remove("active");
     }
@@ -55,7 +56,7 @@ export class NavigationBar extends ViewElement {
     this.#viewContainer.innerHTML = "";
     for (const viewElement of this.#viewElementList) {
       if (viewElement.id == id) {
-        viewElement.navigate();
+        viewElement.navigate(questionId);
         this.#viewContainer.appendChild(viewElement.div);
       }
     }

@@ -60,6 +60,7 @@ const createButton = (options) => {
       button.classList.add(className);
     }
   }
+  if (parent) parent.appendChild(button);
 
   return button;
 };
@@ -159,6 +160,11 @@ const createEditTableCell = (parent) => {
   // 2. Hozzáfűz egy gombot Szerekesztés felirattal a createButton segítségével a táblázatcellához
   // 3. Hozzácsatolja létrehozott cellát a parenthez
   // 4. visszatér a létrehozott gombbal
+  const td = document.createElement("td");
+  const button = createButton({label: "Szerkesztés", parent: td});
+  parent.appendChild(td);
+
+  return button
 };
 
 /**

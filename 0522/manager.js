@@ -64,11 +64,12 @@ export class QuestionManager {
 
   /**
    * @param {import("./gomszab.js").QuestionType} question
+   * @param {number} [id]
    * @returns {Question}
    */
-  #createQuestion(question) {
+  #createQuestion(question, id) {
     const questionClass = new Question();
-    questionClass.id = this.#questionList.length + 1;
+    questionClass.id = id != undefined ? id : this.#questionList.length + 1;
     questionClass.question = question.question;
     questionClass.answers = [
       question.answer1,
@@ -158,4 +159,27 @@ export class QuestionManager {
   set importResultCallback(value) {
     this.#importResultCallback = value;
   }
+
+  /**
+   * @param {number} id
+   * @returns {import("./gomszab.js").QuestionType}
+   */
+  getQuestionTypeById(id) {
+    const question = this.#questionList[id];
+    return {
+      question: question.question,
+      answer1: question.answers[0],
+      answer2: question.answers[1],
+      answer3: question.answers[2],
+      answer4: question.answers[3],
+      rightAnswer: question.rightAnswer,
+    }; 
+  }
+
+  /**
+   *
+   * @param {number} id
+   * @param {import("./gomszab.js").QuestionType} question
+   */
+  updateElement(id, question) {}
 }
