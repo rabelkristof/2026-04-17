@@ -33,11 +33,6 @@ export class FormController extends ViewElement {
   #submitButton;
 
   /**
-   * @type {EditQuestionType}
-   */
-  #editQuestion;
-
-  /**
    * @param {string} id
    * @param {QuestionManager} manager
    * @param {import("./gomszab.js").FormFieldType[]} formFields
@@ -71,12 +66,25 @@ export class FormController extends ViewElement {
     ).form;
 
     this.activateCallback = (questionId) => {
-      if (!questionId) return;
+      if (questionId === undefined) return;
 
       const question = this.#manager.getQuestionTypeById(questionId);
+      const editQuestion = { id: questionId, ...question};
+      for (const key in editQuestion) {
+        for (const input of this.#formInputList) {
+          if (input.name == key) {
+            input.value = editQuestion[key];
+          }
+        }
+      }
+      
     }
 
     this.div.appendChild(this.#form);
+  }
+
+  #editQuestion() {
+
   }
 
   /**
@@ -146,7 +154,7 @@ class FormInput {
    * @param {string} newVal 
    */
   set value(newVal) {
-    this.#input.value;
+    this.#input.value = newVal;
   }
 
   /**
