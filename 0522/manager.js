@@ -99,7 +99,6 @@ export class QuestionManager {
       if (this.#addStatusCallback)
         this.#addStatusCallback("Sikertelen hozzáadás");
     }
-    this.getAllElement();
   }
 
   /**
@@ -109,7 +108,6 @@ export class QuestionManager {
   addElementList(questions) {
     this.#questionList = [];
 
-    let valid = true;
     for (let i = 0; i < questions.length; i++) {
       const newQuestion = this.#createQuestion(questions[i]);
 
@@ -127,7 +125,6 @@ export class QuestionManager {
       }
     }
 
-    this.getAllElement();
     if (this.#importResultCallback)
       this.#importResultCallback("Sikeres hozzáadás");
   }
@@ -165,7 +162,7 @@ export class QuestionManager {
    * @returns {import("./gomszab.js").QuestionType}
    */
   getQuestionTypeById(id) {
-    const question = this.#questionList[id];
+    const question = this.#questionList[id - 1];
     return {
       question: question.question,
       answer1: question.answers[0],
@@ -173,13 +170,27 @@ export class QuestionManager {
       answer3: question.answers[2],
       answer4: question.answers[3],
       rightAnswer: question.rightAnswer,
-    }; 
+    };
   }
 
   /**
-   *
    * @param {number} id
    * @param {import("./gomszab.js").QuestionType} question
+   * @returns {void}
    */
-  updateElement(id, question) {}
+  updateElement(id, question) {
+    const newQuestion = this.#createQuestion(question, id);
+    if (
+      newQuestion.question &&
+      newQuestion.rightAnswer &&
+      newQuestion.answers.length == 4
+    ) {
+      if (this.#addStatusCallback)
+        this.#addStatusCallback("Sikeres szerkesztés");
+      this.#questionList[id - 1] = newQuestion;
+    } else {
+      if (this.#addStatusCallback)
+        this.#addStatusCallback("Sikertelen szerkesztés");
+    }
+  }
 }

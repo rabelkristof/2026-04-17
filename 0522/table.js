@@ -47,5 +47,9 @@ export class Table extends ViewElement {
         });
       }
     };
+
+    this.activateCallback = () => {
+      this.#manager.getAllElement();
+    };
   }
 }

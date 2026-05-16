@@ -33,6 +33,11 @@ export class FormController extends ViewElement {
   #submitButton;
 
   /**
+   * @type {EditQuestionType}
+   */
+  #editQuestion;
+
+  /**
    * @param {string} id
    * @param {QuestionManager} manager
    * @param {import("./gomszab.js").FormFieldType[]} formFields
@@ -41,7 +46,8 @@ export class FormController extends ViewElement {
     super(id);
     this.#manager = manager;
     this.#formInputList = [];
-    this.#form = createForm(
+
+    const { form, button: submitButton } = createForm(
       (form) => {
         const span = document.createElement("span");
         form.appendChild(span);
@@ -61,51 +67,64 @@ export class FormController extends ViewElement {
       },
       (e) => {
         e.preventDefault();
-        this.#createElement();
+        let valid = true;
+        for (const input of this.#formInputList) {
+          if (!input.validate()) {
+            valid = false;
+          }
+        }
+        if (!valid) return;
+
+        const question = this.#createElement();
+        if (this.#editQuestion) {
+          this.#manager.updateElement(this.#editQuestion.id, question);
+        } else {
+          this.#manager.addElement(question);
+        }
+
+        this.#form.reset();
       },
-    ).form;
+    );
+
+    this.#form = form;
+    this.#submitButton = submitButton;
 
     this.activateCallback = (questionId) => {
-      if (questionId === undefined) return;
+      if (questionId === undefined) {
+        this.#editQuestion = null;
+        this.#submitButton.innerText = "Küldés";
+        return;
+      }
 
+      this.#submitButton.innerText = "Szerkesztés";
       const question = this.#manager.getQuestionTypeById(questionId);
-      const editQuestion = { id: questionId, ...question};
-      for (const key in editQuestion) {
+      this.#editQuestion = { id: questionId, ...question };
+      for (const key in this.#editQuestion) {
         for (const input of this.#formInputList) {
           if (input.name == key) {
-            input.value = editQuestion[key];
+            input.value = this.#editQuestion[key];
           }
         }
       }
-      
-    }
+    };
 
     this.div.appendChild(this.#form);
-  }
-
-  #editQuestion() {
-
   }
 
   /**
    * @returns {import("./gomszab.js").QuestionType}
    */
   #createElement() {
-    let valid = true;
     /**
      * @type {import("./gomszab.js").QuestionType}
      */
     const question = {};
     for (const input of this.#formInputList) {
       question[input.name] = input.value;
-      if (!input.validate()) {
-        valid = false;
-      }
     }
 
-    if (valid) {
-      this.#manager.addElement(question);
-      this.#form.reset();
+    for (const input of this.#formInputList) {
+      question[input.name] = input.value;
     }
 
     return question;
@@ -151,7 +170,7 @@ class FormInput {
   }
 
   /**
-   * @param {string} newVal 
+   * @param {string} newVal
    */
   set value(newVal) {
     this.#input.value = newVal;
