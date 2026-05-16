@@ -69,7 +69,7 @@ export class QuestionManager {
    */
   #createQuestion(question, id) {
     const questionClass = new Question();
-    questionClass.id = id != undefined ? id : this.#questionList.length + 1;
+    questionClass.id = id != undefined ? id : this.#questionList.length;
     questionClass.question = question.question;
     questionClass.answers = [
       question.answer1,
@@ -162,7 +162,7 @@ export class QuestionManager {
    * @returns {import("./gomszab.js").QuestionType}
    */
   getQuestionTypeById(id) {
-    const question = this.#questionList[id - 1];
+    const question = this.#questionList[id];
     return {
       question: question.question,
       answer1: question.answers[0],
@@ -187,10 +187,17 @@ export class QuestionManager {
     ) {
       if (this.#addStatusCallback)
         this.#addStatusCallback("Sikeres szerkesztés");
-      this.#questionList[id - 1] = newQuestion;
+      this.#questionList[id] = newQuestion;
     } else {
       if (this.#addStatusCallback)
         this.#addStatusCallback("Sikertelen szerkesztés");
     }
+  }
+
+  /**
+   * @returns {import("./gomszab.js").QuestionType[]}
+   */
+  getQuestionTypeList() {
+    return this.#questionList.map((_, i) => this.getQuestionTypeById(i));
   }
 }

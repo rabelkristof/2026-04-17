@@ -161,10 +161,10 @@ const createEditTableCell = (parent) => {
   // 3. Hozzácsatolja létrehozott cellát a parenthez
   // 4. visszatér a létrehozott gombbal
   const td = document.createElement("td");
-  const button = createButton({label: "Szerkesztés", parent: td});
+  const button = createButton({ label: "Szerkesztés", parent: td });
   parent.appendChild(td);
 
-  return button
+  return button;
 };
 
 /**
