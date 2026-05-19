@@ -1,0 +1,60 @@
+{
+    "tableHeader": [
+        "Állítás",
+        "Igaz-e"
+    ],
+    "questions": [
+        {
+            "question": "A honfoglalás során a magyar törzsek a 9-10. században érkeztek a Kárpát-medencébe.",
+            "answer": "1"
+        },
+        {
+            "question": "Az 1526-os mohácsi csatában II. Lajos király győzelmet aratott az oszmán seregek felett.",
+            "answer": "0"
+        },
+        {
+            "question": "A nándorfehérvári diadal 1456-ban történt Hunyadi János és Kapisztrán János vezetésével.",
+            "answer": "1"
+        },
+        {
+            "question": "A tatárjárás során IV. Béla király nem tett semmilyen intézkedést az ország újjáépítésére.",
+            "answer": "0"
+        },
+        {
+            "question": "Az ország három részre szakadt Buda török kézre kerülése után, 1541-ben.",
+            "answer": "1"
+        },
+        {
+            "question": "Hunyadi Mátyás uralkodása alatt Magyarországot soha nem érte külső támadás.",
+            "answer": "0"
+        },
+        {
+            "question": "Az 1848-49-es forradalom és szabadságharc vezetője Kossuth Lajos volt.",
+            "answer": "1"
+        },
+        {
+            "question": "1956-ban Magyarországon kommunista forradalom tört ki a szovjet megszállás támogatására.",
+            "answer": "0"
+        },
+        {
+            "question": "1946. február 1-jén kikiáltották a Magyar Köztársaságot.",
+            "answer": "1"
+        },
+        {
+            "question": "A magyarok soha nem szenvedtek vereséget az oszmán birodalom ellen vívott csatákban.",
+            "answer": "0"
+        }
+    ],
+    "formFieldList": [
+        {
+            "id": "elso",
+            "label": "Állítás",
+            "name": "question"
+        },
+        {
+            "id": "masodik",
+            "label": "Helyes-e",
+            "name": "answer"
+        }
+    ]
+}
