@@ -21,7 +21,12 @@ export class NavigationBar extends ViewElement {
    * @returns {void}
    */
   addViewElement(label, view) {
-    const buttonDiv = createRadioButton({ id: view.id, label, name: view.id });
+    const buttonDiv = createRadioButton({
+      id: view.id,
+      label,
+      name: "tab",
+    });
+
     buttonDiv.addEventListener("click", () => {
       this.navigate(view.id);
     });
