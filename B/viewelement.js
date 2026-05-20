@@ -2,6 +2,7 @@ import { show, hide } from "./gomszab.js";
 
 /**
  * @callback ActivateCallback
+ * @param {number} [questionId]
  * @returns {void}
  */
 
@@ -39,14 +40,16 @@ export class ViewElement {
   }
 
   /**
+   * @param {string} id
+   * @param {number} [questionId]
    * @returns {void}
    */
-  navigate(id) {
+  navigate(id, questionId) {
     if (id != this.#id) {
       hide(this.#div);
     } else {
       show(this.#div);
-      if (this.#activateCallback) this.#activateCallback();
+      if (this.#activateCallback) this.#activateCallback(questionId);
     }
   }
 
@@ -65,7 +68,7 @@ export class ViewElement {
   }
 
   /**
-   * @type {ActivateCallback}
+   * @param {ActivateCallback} value
    */
   set activateCallback(value) {
     this.#activateCallback = value;

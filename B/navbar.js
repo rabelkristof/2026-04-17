@@ -37,10 +37,11 @@ export class NavigationBar extends ViewElement {
 
   /**
    * @param {string} id
+   * @param {number} [questionId]
    */
-  navigate(id) {
+  navigate(id, questionId) {
     for (const viewElement of this.#viewElementList) {
-      viewElement.navigate(id);
+      viewElement.navigate(id, questionId);
     }
     this.div.querySelector(`#${id}`).checked = true;
   }

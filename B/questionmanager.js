@@ -66,11 +66,12 @@ export class QuestionManager {
 
   /**
    * @param {import("./gomszab").TrueFalseQuestionType} question
+   * @param {number} [id]
    * @returns {Question}
    */
-  #createQuestion(question) {
+  #createQuestion(question, id) {
     const questionClass = new Question();
-    questionClass.id = this.#questionList.length;
+    questionClass.id = id !== undefined ? id : this.#questionList.length;
     questionClass.question = question.question;
     questionClass.answer =
       question.answer === "1" ? true : question.answer === "0" ? false : null;
@@ -140,5 +141,34 @@ export class QuestionManager {
     return this.#questionList
       .map((q) => `${q.question};${q.answer ? "1" : "0"}`)
       .join("\n");
+  }
+
+  /**
+   * @param {number} id
+   * @returns {import("./gomszab").TrueFalseQuestionType}
+   */
+  getQuestionTypeById(id) {
+    const question = this.#questionList[id];
+
+    return { question: question.question, answer: question.answer ? "1" : "0" };
+  }
+
+  /**
+   * @param {number} id
+   * @param {import("./gomszab").TrueFalseQuestionType} question
+   */
+  updateElement(id, question) {
+    const newQuestion = this.#createQuestion(question, id);
+
+    if (newQuestion.answer !== null) {
+      this.#questionList[id] = newQuestion;
+      if (this.#addStatusCallback)
+        this.#addStatusCallback("Sikeres szerkesztés");
+    } else {
+      if (this.#addStatusCallback)
+        this.#addStatusCallback(
+          "Sikertelen szerkesztés (csak 0 és 1 érték adható meg válasznak)",
+        );
+    }
   }
 }

@@ -1,11 +1,13 @@
 import {
   clearTbodyAndHandleEmptyList,
+  createEditTableCell,
   createRowForTbody,
   createTable,
   createTextTableCell,
 } from "./gomszab.js";
 import { QuestionManager } from "./questionmanager.js";
 import { ViewElement } from "./viewelement.js";
+import { NavigationBar } from "./navbar.js";
 
 export class Table extends ViewElement {
   /**
@@ -14,13 +16,20 @@ export class Table extends ViewElement {
   #manager;
 
   /**
+   * @type {NavigationBar}
+   */
+  #navigationBar;
+
+  /**
    * @param {string} id
    * @param {QuestionManager} manager
    * @param {string[]} headerString
+   * @param {NavigationBar} navigationBar
    */
-  constructor(id, manager, headerString) {
+  constructor(id, manager, headerString, navigationBar) {
     super(id);
     this.#manager = manager;
+    this.#navigationBar = navigationBar;
 
     this.activateCallback = () => {
       this.#manager.getAllElement();
@@ -39,6 +48,10 @@ export class Table extends ViewElement {
         const row = createRowForTbody(tbody);
         createTextTableCell(question.question, row);
         createTextTableCell(question.answer ? "igaz" : "nem igaz", row);
+        const editButton = createEditTableCell(row);
+        editButton.onclick = () => {
+          this.#navigationBar.navigate("form", question.id);
+        };
       }
     };
   }

@@ -1,6 +1,10 @@
-import { createForm, createInputField, createSpan } from "./gomszab.js";
+import { createForm, createInputField } from "./gomszab.js";
 import { QuestionManager } from "./questionmanager.js";
 import { ViewElement } from "./viewelement.js";
+
+/**
+ * @typedef {{id: number, question: string, answer: string}} EditTrueFalseQuestionType
+ */
 
 export class FormController extends ViewElement {
   /**
@@ -19,6 +23,16 @@ export class FormController extends ViewElement {
   #form;
 
   /**
+   * @type {HTMLButtonElement}
+   */
+  #submitButton;
+
+  /**
+   * @type {EditTrueFalseQuestionType}
+   */
+  #editQuestion;
+
+  /**
    * @param {string} id
    * @param {QuestionManager} manager
    * @param {import("./gomszab.js").FormFieldType[]} formFieldList
@@ -28,7 +42,7 @@ export class FormController extends ViewElement {
     this.#formInputList = [];
     this.#manager = manager;
 
-    const { form, button: _ } = createForm(
+    const { form, button } = createForm(
       (form) => {
         const status = document.createElement("span");
         form.appendChild(status);
@@ -60,12 +74,40 @@ export class FormController extends ViewElement {
           question[field.name] = field.value;
         }
 
-        if (valid) this.#manager.addElement(question);
+        if (valid) {
+          this.#form.reset();
+          if (this.#editQuestion) {
+            this.#manager.updateElement(this.#editQuestion.id, question);
+            this.#editQuestion = null;
+            this.#submitButton.innerText = "Küldés";
+          } else {
+            this.#manager.addElement(question);
+          }
+        }
       },
     );
 
+    this.#submitButton = button;
     this.#form = form;
     this.div.appendChild(this.#form);
+
+    this.activateCallback = (id) => {
+      if (id === undefined) {
+        return;
+      }
+
+      this.#submitButton.innerText = "Szerkesztés";
+      const question = this.#manager.getQuestionTypeById(id);
+      this.#editQuestion = { id, ...question };
+
+      for (const key in this.#editQuestion) {
+        for (const field of this.#formInputList) {
+          if (field.name === key) {
+            field.value = this.#editQuestion[key];
+          }
+        }
+      }
+    };
   }
 }
 
@@ -130,5 +172,12 @@ class FormInput {
    */
   get value() {
     return this.#input.value;
+  }
+
+  /**
+   * @param {string} newVal
+   */
+  set value(newVal) {
+    this.#input.value = newVal;
   }
 }
