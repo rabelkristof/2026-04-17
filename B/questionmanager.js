@@ -171,4 +171,13 @@ export class QuestionManager {
         );
     }
   }
+
+  /**
+   * @returns {import("./gomszab").TrueFalseQuestionType[]}
+   */
+  getQuestionTypeList() {
+    return this.#questionList.map((q) => {
+      return { question: q.question, answer: q.answer };
+    });
+  }
 }
