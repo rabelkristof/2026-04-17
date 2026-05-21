@@ -35,28 +35,33 @@ export class NavigationBar extends ViewElement {
   addViewElement(label, view) {
     this.#viewElementList.push(view);
 
-    const button = createButton({ parent: this.#buttonBar, label });
+    const button = createButton({
+      id: view.id,
+      parent: this.#buttonBar,
+      label,
+    });
     button.onclick = () => {
-      for (const button of this.#buttonBar.getElementsByTagName("button")) {
-        button.classList.remove("active");
-      }
-
-      button.classList.add("active");
       this.navigate(view.id);
     };
   }
 
   /**
    * @param {string} id
+   * @param {number} [questionId]
    * @returns {void}
    */
-  navigate(id) {
+  navigate(id, questionId) {
     this.#viewContainer.innerHTML = "";
     for (const viewelement of this.#viewElementList) {
       if (viewelement.id == id) {
-        viewelement.navigate();
+        viewelement.navigate(questionId);
         viewelement.appendTo(this.#viewContainer);
       }
+    }
+
+    for (const button of this.#buttonBar.getElementsByTagName("button")) {
+      if (button.id === id) button.classList.add("active");
+      else button.classList.remove("active");
     }
   }
 }

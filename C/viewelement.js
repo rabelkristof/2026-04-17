@@ -1,5 +1,6 @@
 /**
  * @callback ActivateCallback
+ * @param {number} questionId
  * @returns {void}
  */
 
@@ -38,10 +39,11 @@ export class ViewElement {
   }
 
   /**
+   * @param {number} [questionId]
    * @returns {void}
    */
-  navigate() {
-    if (this.#activateCallback) this.#activateCallback();
+  navigate(questionId) {
+    if (this.#activateCallback) this.#activateCallback(questionId);
   }
 
   /**
