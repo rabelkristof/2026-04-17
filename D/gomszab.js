@@ -116,7 +116,7 @@ const clearTbodyAndHandleEmptyList = (tbody, list) => {
   if (list.length == 0) {
     const tr = createRowForTbody(tbody);
     const cell = createTextTableCell("üres táblázat", tr);
-    cell.colSpan = 5;
+    cell.colSpan = 7;
   }
 };
 
