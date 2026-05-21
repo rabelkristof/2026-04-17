@@ -3,6 +3,8 @@ import { FormController } from "./form.js";
 import { ImportExport } from "./importexport.js";
 import { NavigationBar } from "./navbar.js";
 import { QuestionManager } from "./questionmanager.js";
+import { QuizManager } from "./quizmanager.js";
+import { QuizView } from "./quizview.js";
 import { Table } from "./table.js";
 
 const navbar = new NavigationBar("navbar");
@@ -10,9 +12,12 @@ const questionmanager = new QuestionManager(data.questions);
 const table = new Table("table", questionmanager, data.tableHeader, navbar);
 const form = new FormController("form", questionmanager, data.formFieldList);
 const importExport = new ImportExport("importexport", questionmanager);
+const quizmanager = new QuizManager(questionmanager);
+const quizview = new QuizView("quiz", quizmanager);
 
 navbar.addViewElement("Táblázat", table);
 navbar.addViewElement("Űrlap", form);
 navbar.addViewElement("Import/export", importExport);
+navbar.addViewElement("Kvíz", quizview);
 
 navbar.appendTo(document.body);

@@ -36,7 +36,7 @@ export class NavigationBar extends ViewElement {
     this.#viewElementList.push(view);
 
     const button = createButton({
-      id: view.id,
+      id: `${view.id}button`,
       parent: this.#buttonBar,
       label,
     });
@@ -60,7 +60,7 @@ export class NavigationBar extends ViewElement {
     }
 
     for (const button of this.#buttonBar.getElementsByTagName("button")) {
-      if (button.id === id) button.classList.add("active");
+      if (button.id === `${id}button`) button.classList.add("active");
       else button.classList.remove("active");
     }
   }
