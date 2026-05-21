@@ -37,11 +37,12 @@ export class NavigationBar extends ViewElement {
 
   /**
    * @param {string} id
+   * @param {number} [questionId]
    * @returns {void}
    */
-  navigate(id) {
+  navigate(id, questionId) {
     for (const viewElement of this.#viewElementList) {
-      viewElement.navigate(id);
+      viewElement.navigate(id, questionId);
     }
 
     for (const radioButton of this.div.querySelectorAll(

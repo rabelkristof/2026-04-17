@@ -2,6 +2,7 @@ import { createDiv, hide, show } from "./gomszab.js";
 
 /**
  * @callback ActivateCallback
+ * @param {number} questionId
  * @returns {void}
  */
 
@@ -39,12 +40,13 @@ export class ViewElement {
 
   /**
    * @param {string} id
+   * @param {number} [questionId]
    * @returns {void}
    */
-  navigate(id) {
+  navigate(id, questionId) {
     if (this.#id === id) {
       show(this.#div);
-      if (this.#activateCallback) this.#activateCallback();
+      if (this.#activateCallback) this.#activateCallback(questionId);
     } else {
       hide(this.#div);
     }

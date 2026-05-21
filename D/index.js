@@ -7,7 +7,7 @@ import { Table } from "./table.js";
 
 const navbar = new NavigationBar("navbar");
 const questionmanager = new QuestionManager(data.questions);
-const table = new Table("table", questionmanager, data.tableHeader);
+const table = new Table("table", questionmanager, data.tableHeader, navbar);
 const form = new FormController("form", questionmanager, data.formFieldList);
 const importexport = new ImportExport("importexport", questionmanager);
 

@@ -68,11 +68,12 @@ export class QuestionManager {
 
   /**
    * @param {import("./gomszab").QuestionType} question
+   * @param {number} [id]
    * @returns {Question}
    */
-  #createQuestion(question) {
+  #createQuestion(question, id) {
     const newQuestion = new Question();
-    newQuestion.id = this.#questionList.length;
+    newQuestion.id = id === undefined ? this.#questionList.length : id;
     newQuestion.question = question.question;
     newQuestion.answers = [
       question.answer1,
@@ -145,5 +146,34 @@ export class QuestionManager {
    */
   set importResultCallback(value) {
     this.#importResultCallback = value;
+  }
+
+  /**
+   * @param {number} id
+   * @returns {import("./gomszab").QuestionType}
+   */
+  getQuestionTypeById(id) {
+    const question = this.#questionList[id];
+
+    return {
+      question: question.question,
+      answer1: question.answers[0],
+      answer2: question.answers[1],
+      answer3: question.answers[2],
+      answer4: question.answers[3],
+      rightAnswer: question.rightAnswer,
+    };
+  }
+
+  /**
+   *
+   * @param {number} id
+   * @param {import("./gomszab").QuestionType} question
+   */
+  updateElement(id, question) {
+    const newQuestion = this.#createQuestion(question, id);
+
+    this.#questionList[id] = newQuestion;
+    if (this.#addStatusCallback) this.#addStatusCallback("Sikeres szerkesztés");
   }
 }

@@ -2,6 +2,10 @@ import { createDiv, createForm, createInputField } from "./gomszab.js";
 import { QuestionManager } from "./questionmanager.js";
 import { ViewElement } from "./viewelement.js";
 
+/**
+ * @typedef {{id: number, question: string, answer1: string, answer2: string, answer3: string, answer4: string, rightAnswer: string}} EditQuestionType
+ */
+
 export class FormController extends ViewElement {
   /**
    * @type {FormField[]}
@@ -19,6 +23,16 @@ export class FormController extends ViewElement {
   #form;
 
   /**
+   * @type {HTMLButtonElement}
+   */
+  #submitButton;
+
+  /**
+   * @type {EditQuestionType}
+   */
+  #editQuestion;
+
+  /**
    * @param {string} id
    * @param {QuestionManager} manager
    * @param {import("./gomszab").FormFieldType[]} formFields
@@ -28,7 +42,7 @@ export class FormController extends ViewElement {
     this.#manager = manager;
     this.#formInputList = [];
 
-    const { form, button: _ } = createForm(
+    const { form, button } = createForm(
       (form) => {
         const messageDiv = createDiv({ parent: form });
         this.#manager.addStatusCallback = (message) => {
@@ -48,15 +62,40 @@ export class FormController extends ViewElement {
         e.preventDefault();
 
         const question = this.#createElement();
+        if (!question) return;
 
-        if (question) {
+        if (this.#editQuestion) {
+          this.#manager.updateElement(this.#editQuestion.id, question);
+          this.#editQuestion = null;
+        } else {
           this.#manager.addElement(question);
-          this.#form.reset();
         }
+
+        this.#form.reset();
       },
     );
     this.#form = form;
+    this.#submitButton = button;
     this.div.appendChild(this.#form);
+
+    this.activateCallback = (questionId) => {
+      if (questionId === undefined) {
+        this.#submitButton.innerText = "Küldés";
+        return;
+      }
+      this.#submitButton.innerText = "Szerkesztés";
+
+      const question = this.#manager.getQuestionTypeById(questionId);
+      this.#editQuestion = { id: questionId, ...question };
+
+      for (const field of this.#formInputList) {
+        for (const key in question) {
+          if (field.name == key) {
+            field.value = question[key];
+          }
+        }
+      }
+    };
   }
 
   /**
@@ -146,5 +185,12 @@ class FormField {
    */
   get value() {
     return this.#input.value;
+  }
+
+  /**
+   * @param {string} newVal
+   */
+  set value(newVal) {
+    this.#input.value = newVal;
   }
 }
