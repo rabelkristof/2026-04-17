@@ -26,6 +26,7 @@ export class ViewElement {
    */
   constructor(id) {
     this.#div = createDiv({ id });
+    this.#id = id;
   }
 
   /**
