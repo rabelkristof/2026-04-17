@@ -176,4 +176,16 @@ export class QuestionManager {
     this.#questionList[id] = newQuestion;
     if (this.#addStatusCallback) this.#addStatusCallback("Sikeres szerkesztés");
   }
+
+  /**
+   * @returns {import("./gomszab").QuestionType[]}
+   */
+  getQuestionTypeList() {
+    const questions = [];
+    for (let i = 0; i < this.#questionList.length; i++) {
+      questions.push(this.getQuestionTypeById(i));
+    }
+
+    return questions;
+  }
 }

@@ -22,6 +22,7 @@ export class NavigationBar extends ViewElement {
    */
   addViewElement(label, view) {
     this.#viewElementList.push(view);
+    this.div.parentElement.appendChild(view.div);
 
     const button = createRadioButton({
       id: `${view.id}button`,
