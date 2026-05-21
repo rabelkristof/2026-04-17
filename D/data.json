@@ -1,0 +1,116 @@
+{
+    "tableHeader": [
+        "Kérdés",
+        "Válasz1",
+        "Válasz2",
+        "Válasz3",
+        "Válasz4",
+        "Helyes Válasz"
+    ],
+    "questions": [
+        {
+            "question": "Ki írta az 'Egri csillagok' című regényt?",
+            "answer1": "Móricz Zsigmond",
+            "answer2": "Jókai Mór",
+            "answer3": "Gárdonyi Géza",
+            "answer4": "Arany János",
+            "rightAnswer": "Gárdonyi Géza"
+        },
+        {
+            "question": "Melyik művet írta Madách Imre?",
+            "answer1": "A kőszívű ember fiai",
+            "answer2": "Az ember tragédiája",
+            "answer3": "Bánk bán",
+            "answer4": "Toldi",
+            "rightAnswer": "Az ember tragédiája"
+        },
+        {
+            "question": "Ki a 'Toldi' trilógia szerzője?",
+            "answer1": "Petőfi Sándor",
+            "answer2": "Arany János",
+            "answer3": "Babits Mihály",
+            "answer4": "Vörösmarty Mihály",
+            "rightAnswer": "Arany János"
+        },
+        {
+            "question": "Melyik költő írta a 'Himnusz'-t?",
+            "answer1": "Kölcsey Ferenc",
+            "answer2": "Vörösmarty Mihály",
+            "answer3": "József Attila",
+            "answer4": "Ady Endre",
+            "rightAnswer": "Kölcsey Ferenc"
+        },
+        {
+            "question": "'A Pál utcai fiúk' című regényben ki vezette a vörösingeseket?",
+            "answer1": "Nemecsek Ernő",
+            "answer2": "Áts Feri",
+            "answer3": "Boka János",
+            "answer4": "Geréb Dezső",
+            "rightAnswer": "Áts Feri"
+        },
+        {
+            "question": "'Szeptember végén' című verset ki írta?",
+            "answer1": "Ady Endre",
+            "answer2": "Petőfi Sándor",
+            "answer3": "Radnóti Miklós",
+            "answer4": "Babits Mihály",
+            "rightAnswer": "Petőfi Sándor"
+        },
+        {
+            "question": "'A walesi bárdok' című ballada szerzője?",
+            "answer1": "Ady Endre",
+            "answer2": "Petőfi Sándor",
+            "answer3": "Arany János",
+            "answer4": "Babits Mihály",
+            "rightAnswer": "Arany János"
+        },
+        {
+            "question": "'Nyugat' című folyóirat első nemzedékének tagja volt:",
+            "answer1": "Ady Endre",
+            "answer2": "Pilinszky János",
+            "answer3": "Kosztolányi Dezső",
+            "answer4": "Radnóti Miklós",
+            "rightAnswer": "Ady Endre"
+        },
+        {
+            "question": "'Szózat' című költeményt ki írta?",
+            "answer1": "Vörösmarty Mihály",
+            "answer2": "Kölcsey Ferenc",
+            "answer3": "Arany János",
+            "answer4": "József Attila",
+            "rightAnswer": "Vörösmarty Mihály"
+        }
+    ],
+    "formFieldList": [
+        {
+            "id": "elso",
+            "label": "Kérdés",
+            "name": "question"
+        },
+        {
+            "id": "masodik",
+            "label": "Első válasz",
+            "name": "answer1"
+        },
+        {
+            "id": "harmadik",
+            "label": "Második válasz",
+            "name": "answer2"
+        },
+        {
+            "id": "negyedik",
+            "label": "Harmadik válasz",
+            "name": "answer3"
+        },
+        {
+            "id": "otodik",
+            "label": "Negyedik válasz",
+            "name": "answer4"
+        },
+        {
+            "id": "otodik",
+            "label": "Helyes válasz",
+            "name": "rightAnswer"
+        }
+    ]
+}
